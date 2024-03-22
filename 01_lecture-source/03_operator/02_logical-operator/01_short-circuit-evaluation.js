@@ -15,8 +15,8 @@ console.log(false||'banana');
 console.log('apple' && 'banana');
 
 //false가 값을 결정했기 때문에 false 값을 반환하는 것이다
-console.log(false &&'banana');
-console.log('banana' &&false);
+console.log(false && 'banana');
+console.log('banana' && false);
 
 // 논리 연산자는 결과값을 결정하는 값을 반환한다고 생각하면 된다
 
@@ -29,3 +29,5 @@ else console.log("홀수입니다");
 console.log("========================================================")
 num % 2==0 && console.log('짝수입니다');
 num % 2==0 || console.log('홀수 입니다');
+
+

@@ -30,6 +30,6 @@ var firstName = 'hojun'
 
 console.log('안녕하세요 제 이름은 '+lastName+firstName+'입니다');
 
-// 표현식 삽입을 이용하면 문자열 연산자보다 가독성 족고 간편하게 문자열 조합 가능
+// 표현식 삽입을 이용하면 문자열 연산자보다 가독성 좋고 간편하게 문자열 조합 가능
 console.log(`제 이름은 ${lastName}${firstName} 입니다`);
 console.log('제 이름은 ${lastName}${firstName} 입니다');

@@ -12,3 +12,5 @@ console.log(+'');
 
 //4. * 산술연산자 이용
 console.log('10'*1);
+
+
