@@ -12,5 +12,5 @@ var test1 = '기본값' ?? null;
 console.log(test1);
 
 var value = '' ?? '기본값';
-console.log('');
+console.log(value);
 // 좌항이 null or undefined 가 아니기 때문에 ''를 그대로 출력해준다 .

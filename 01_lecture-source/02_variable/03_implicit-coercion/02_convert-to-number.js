@@ -17,5 +17,7 @@ console.log(+{});
 console.log(+[]);
 console.log(+function(){});
 
-// 빈문자열, 빈배열, null, false 는 0 으로 반환,true 는 1로 반환
-//객체와 undefined 는 반환이 되지 않는다 NaN 반환
+// 빈문자열, 빈배열, null, false(falsy) 는 0으로 반환,true 는 1로 반환
+//객체와 undefined(undefined는 falsy 임에도 반환되지 않는다 예외인가?) 는 반환이 되지 않는다 NaN 반환
+
+console.log(+undefined);

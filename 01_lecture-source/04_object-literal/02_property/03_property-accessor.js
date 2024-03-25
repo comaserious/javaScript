@@ -23,5 +23,6 @@ dog['eat']('고구마');
 // console.log(dog.1);     
 //특수문자 띄어쓰기가 있는 문자열 또한 마침표 표기법이 불가능하다
 // console.log(dog.@ S P A C E @);
-console.log(dog['1']);
+
+console.log(dog['1']);    // 프로퍼티 키가 숫자로 이루어진 문자열인 경우 따옴표 생략가능
 console.log(dog['@ S P A C E @']);

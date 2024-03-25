@@ -19,7 +19,7 @@ console.log('===================================================================
 console.log('name' in student);
 // height 는 존재 하지 않기 때문에 false를 반환한다
 console.log('height' in student);
-
+// 값은 unefined 이지만 존재는 하기 때문에 true 를 반환한다
 console.log('test' in student);
 
 

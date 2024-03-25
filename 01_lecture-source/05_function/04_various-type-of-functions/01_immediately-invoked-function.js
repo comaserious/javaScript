@@ -17,4 +17,5 @@
     console.log(`${name} 님 안녕하세요`)
 })('김김김김');
 
-console.log(hello('fhfhfhfhfhfh'));
+// console.log(hello('fhfhfhfhfhfh')); 함수가 정의가 된적이 없다는 에러가 발생한다 한번만 사용하고 다시는 사용할수 없기 때문이다
+

@@ -21,7 +21,9 @@ dog.age = 3;
 delete dog.age;
 
 // 존재하지 않은 프로퍼티를 삭제한다면
+// 아무런 에러없이 무시하고 넘어간다
 delete dog.get;
+
 
 
 

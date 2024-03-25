@@ -27,3 +27,5 @@ var obj2 ={
 };
 
 console.log(obj2);
+
+console.log(obj2['key-4']);

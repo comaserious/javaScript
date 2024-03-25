@@ -32,4 +32,7 @@ console.log(apply(increase,10));
 
 console.log(apply(decrease,10));
 
-console.log(apply(function(value){return value**2;},5));
+// 콜백함수를 익명함수 리터럴로 정의하면 곧바로 고차함수에 전달 할 수있다
+console.log(apply(function(value){return value**2;},5));   // ** 제곱이다
+/*함수의 변하지 않는 공통 로직은 미리 정의해두고 경우에 따라 변경되는 로직은 추상화해서 함수 외부에서 내부로 전달하는 방식
+비동기 처리(event, timer, ajax) 에 자주 사용되는 패턴이다 */

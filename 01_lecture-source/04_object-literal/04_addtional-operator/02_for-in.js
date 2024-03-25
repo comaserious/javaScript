@@ -14,5 +14,3 @@ for(var key in student){
     console.log(`student[key] : ${student[key]}`);  // 키에 해당하는 value
 }
 
-var str = student.getInfo;
-console.log(str);

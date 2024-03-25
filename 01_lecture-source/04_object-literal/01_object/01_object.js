@@ -41,3 +41,7 @@ console.table(student);
 var student2 = {};
 console.log(typeof student2);
 console.log(student2);
+
+/*객체 리터럴의 중괄호는 코드 블록을 의미하지 않는다                                                       
+    따라서 닫는 중괄호 뒤에는 세미콜론을 붙인다.
+    숫자 값이나 문자열을 만드는 것과 유사하게 리터럴로 객체를 생성 할 수 있다 */

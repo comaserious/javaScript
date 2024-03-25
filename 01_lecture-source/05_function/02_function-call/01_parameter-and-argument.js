@@ -49,10 +49,12 @@ function hi(name='아무개'){
 result = hi();
 console.log(result);
 
-result = hi('leehoju');
-console.log(result);
+// result = hi('leehoju');
+// console.log(result);
 
+//TypeError 를 발생시켜 인수에대한 검증 과정
 // result=hi('홍길동','유관순');
 // result = hi(1);
-result = hi('');
-console.log(result);
+// result = hi('');
+
+// console.log(result);
