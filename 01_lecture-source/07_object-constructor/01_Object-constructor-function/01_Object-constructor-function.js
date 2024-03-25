@@ -17,6 +17,6 @@ const student = new Object();
 console.log(student);
 
 student.name='홍길동';
-student.age = '30';
+student.age = 30;
 
 console.log(student);
