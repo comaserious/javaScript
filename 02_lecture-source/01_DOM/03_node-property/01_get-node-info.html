@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_get node info</title>
+</head>
+<body>
+    <h1>01. 노드 정보 취득</h1>
+    <pre>
+        Node.prototype.nodeType : 노드 객체의 종류, 즉 노드 타입을 상수 반환
+            element : 요소타입을 나타내면 상수 1
+            text : 텍스트 노드 타입을 나타내는 상수 3
+            document : 문소 노드 타입을 나타내는 상수 9
+
+        Node.prototype.nodeName : 노드의 이름을 문자열로 반환
+            element : 문자열로 태그 이름 반환(대문자로)
+            text : 문자열 "#text" 반환
+            document : 문자열 "#document" 반환
+    </pre>
+
+    <div id="area">노드 정보 취득</div>
+
+    <script>
+        console.log(document.nodeType);
+        console.log(document.nodeName);
+
+        const $area = document.getElementById('area');
+
+        console.log($area.nodeType);
+        console.log($area.nodeName);
+
+        const $textNode = $area.firstChild;
+        console.log($textNode.nodeType);
+        console.log($textNode.nodeName);
+    </script>
+</body>
+</html>

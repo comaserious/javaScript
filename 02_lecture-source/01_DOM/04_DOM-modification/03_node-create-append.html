@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 node create append</title>
+</head>
+<body>
+    <h1>03. 노드생성과 추가</h1>
+    <pre>
+        Document.prototype.createElement(tagName) : 인수로 전달 받은 태그이름에 해당하는 요소노드를 생성하여 반환
+        Document.prototype.createTextNode(text) : 인수로 전달 받은 텍스트 값으로 텍스트 노드를 생성하여 반환
+        Node.prototype.appendChild(childNode) : 인수로 받은 노드를 appendChild 메소드를 호출한 노드의 마지막자식 노드로 추가
+    </pre>
+
+    <ul id="drink">
+        <li>소주</li>
+    </ul>
+
+    <script>
+        const $drink = document.getElementById('drink');
+
+        // 요소노드 생성 -> 홀로 존재 어딜 들어갈지 모름.
+        const $li = document.createElement('li');
+
+        // 텍스트 노드 생성
+        // const $text = document.createTextNode('제로콜라');
+
+        //텍스트 노드를 $li 요소노드의 자식 노드로 추가
+        // $li.appendChild($text);
+
+        $li.textContent = '제로콜라'
+
+        //자식 노드가 하나도 없는 경우에는 텍스트 노드를 생성하여
+        //요소노드의 자식 노드로 텍스트를 추가하는 것보다 textContent 사용이 간편하다
+        //$li 요소노드를 $drink 요소노드의 자식 노드로 추가
+        $drink.appendChild($li);
+
+    </script>
+
+    <h3>복수의 노드 생성과 추가</h3>
+    <ul id="food">
+        <li>짜장면</li>
+    </ul>
+
+    <script>
+        const $food = document.getElementById('food');
+
+        //DocumentFragment 
+        //노드는 자식 노드들의 부모 노드로서 
+        //별도의 sub DOM 을 구성하여 만들고
+        //기존의 DOM 에 추가하기 위한 용도로 사용된다
+        const $fragment = document.createDocumentFragment();
+
+        ['짬뽕','탕수육','짜장면','볶음밥'].forEach(test => {
+            const $li = document.createElement('li');
+
+            //$li 에 전달받은 문자(메뉴) 자식으로 추가
+            $li.textContent = test;
+
+            //$fragment 에 li 를 추가
+            $fragment.appendChild($li);
+
+        })
+
+        $food.appendChild($fragment);
+
+
+    </script>
+
+</body>
+</html>

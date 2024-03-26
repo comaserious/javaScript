@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 use class</title>
+    <style>
+        .area{
+            width:100px;
+            height : 100px;
+            border : 1px solid black;
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <h1>04. CSS 선택자를 이용한 요소 노드 획득</h1>
+    <pre>
+        <b>Document.prototype/Element.prototype.querySelector</b>
+        메소드는 인수로 전달한 CSS 선택자를 만족시키는 하나의 요소노드를 
+        탐색하여 반환한다
+    </pre>
+    <div class="area">
+        <p>first</p>
+    </div>
+
+    <div class="area">
+        <p>second</p>
+    </div>
+
+    <script>
+        //querySelector
+        // DOM 전체에서 class 속성 값이 area 인 요소들중 첫번째 요소 노드 반환
+        const $area = document.querySelector('.area');
+        console.log($area);
+
+        $area.style.backgroundColor='gray';
+        const $first = $area.querySelector('p');
+        console.log($first);
+        $first.style.color='white';
+    </script>
+    <hr>
+    <pre>
+        <b>Doucument.prototype/Element.prototype.querySelectorAll</b>
+        메소드는 인수로 전달한 css 선택자를 만족시키는 모든 요소노드를 반환해준다
+        여러개의 요소노드 객체를 갖는 DOM 컬렉션 객체인
+        NodeList 객체를 반환한다(HTMLCollectino과는 다른 객체이다)
+    </pre>
+    <ul id="list">
+        <li class="drink">커피</li>
+        <li class="drink">콜라</li>
+        <li class="food">김치찌개</li>
+        <li class="food">된장찌개</li>
+    </ul>
+
+    <script>
+        //querySelectorAll
+        // NodeList 로 반환한다
+        // 유사 객체배열 Iterable(이터레이블)이다
+        const $lists = document.querySelectorAll('ul>li');
+        console.log($lists);   
+        [...$lists].forEach(list=>list.style.backgroundColor='gray');
+
+        //lists 하위 요소중 food 클래스를 가진 모든 요소 반환
+        const $foodlist=document.getElementById('list').querySelectorAll('.food');
+        console.log($foodlist);
+        [...$foodlist].forEach(food=>food.style.color='white');
+
+        // css 선택자를 만족시키는 요소가 존재하지 않는 경우
+        // HTMLCollection 과 마찬가지로 빈 NodeList를 반환한다
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_use-tag-name</title>
+</head>
+<body>
+    <h1>02. 태그이름을 이용한 요소 노드 취득</h1>
+    <pre>
+        <b>Doucument.prototype/Element.prototype.getElementsByTagNmae</b>
+        메소드는 인수로 전달 한 태그 이름을 갖는 모든 요소 노드들을 탐색하여
+        반환한다. 메소드 이름이 elements <=복수형인 것으로 알수 있듯
+        여러개의 요소 노드 객체를 갖는 DOM 컬렉션 객체인 HTMLCollection
+        객체를 반환한다
+    </pre>
+
+    <ul id="food">
+        <li>김치찌개</li>
+        <li>된장찌개</li>
+        <li>고등어구이</li>
+    </ul>
+    <ul id="drink">
+        <li>커피</li>
+        <li>콜라</li>
+        <li>우유</li>
+    </ul>
+
+    <script>
+        // Document.prototype.getElementsByTagName
+        const $lists = document.getElementsByTagName('li');
+        console.log($lists);
+        // HTMLCollection - 유사객체배열, 이터러블(Iterable)
+        console.log($lists.length);
+
+        // 기본 반복문을 통한 배경색 변경 처리
+        let changeColor=0;
+        for(let i =0 ; i<$lists.length;i++){
+            $lists[i].style.backgroundColor =`rgb(130,220,${changeColor})`;
+            changeColor+=50;
+        }
+
+        //HTMLCollection 객체를 배열로 변환하여 순회하며 color 프로퍼티 값 바꾸기
+        // 스프레드 문법 [...$lists]
+        [...$lists].forEach(list=>list.style.color='blue');
+        
+        // 스프레드 문법과 동일한 효과
+        Array.from($lists).forEach(list=>list.style.color='red');
+
+        // drink 아이디를 가진 ul 태그의 자손 li 태그 탐색
+
+
+        // 여기서 알수 있는 건 document 는 전체 박스를 의미한다는 걸 알수 있다
+        // 즉 get element 는 앞에 어느 박스 에서 사용할지 결정하면 될것이다
+        const $drink = document.getElementById('drink');
+        const $listsFromDrink = $drink.getElementsByTagName('li');
+
+        console.log($listsFromDrink);
+
+        //forEach 객체안의 요소를 하나씩 꺼내 인자로 넣어준다
+        [...$listsFromDrink].forEach(list=>list.style.color='blue');
+
+        // 해당 태그 이름을 갖는 요소가 없는 경우?
+        const $noElem = $drink.getElementsByTagName('a');
+        // 빈 HTMLCollection 객체 반환
+        console.log($noElem);
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 sibling node</title>
+</head>
+<body>
+    <h1>03. 형제 노드 탐색</h1>
+    <ol id="node">
+        <li>Node.prototype.previousSibling : 형제 노드 중 자신의 이전 형제 노드(요소노드,텍스트 노드)를 탐색하여 반환</li>
+        <li>Node.prototype.nextSibling : 형제 노드 중 자신의 다음 형제 노드(요소노드, 텍스트 노드)를 탐색하여 반환</li>
+    </ol>
+
+    <script>
+        const $node = document.getElementById('node');
+        
+        // const firstChild = $node.firstChild;
+
+        //구조 분해 할당
+        const {firstChild} = $node;
+        
+        console.log(firstChild);
+
+        // const nextSilbing = firstChild.nextSilbing;
+        const{nextSibling} = firstChild;
+        console.log(nextSibling);
+
+        const{previousSibling} = nextSibling;
+        console.log(previousSibling);
+
+        //firstChild -> nextSibling -> previousSibling(first 와 동일)
+    </script>
+
+    <ol id="element">
+        <li>Element.prototype.previousElementSibling : 형제 노드 중 자신의 이전 형제 요소 노드를 탐색하여 반환</li>
+        <li>Element.prototype.nexElementSibling : 형제 노드 중 자신의 다음 형제 요소 노드를 탐색하여 반환</li>
+    </ol>
+
+    <script>
+        const $element = document.getElementById('element');
+
+        //firstElementChild 포로퍼티 요소노드만 반환한다
+        const {firstElementChild} = $element;
+        console.log(firstElementChild);
+
+        const{nextElementSibling} = firstElementChild;
+        console.log(nextElementSibling);
+
+        const{previousElementSibling} = nextElementSibling;
+        console.log(previousElementSibling);
+
+        //firstElementChild => nextElementSibling => previousElementSibling(firstElementChild 와 동일)
+        
+    </script>
+
+
+
+</body>
+</html>

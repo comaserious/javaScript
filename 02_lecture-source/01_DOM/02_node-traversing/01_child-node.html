@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 child-node</title>
+</head>
+<body>
+    <h1>01. 자식 노드 탐색하기</h1>
+    <h3>노드 탐색</h3>
+    <pre>
+        요소노드 취득 후 취득요소를 기점으로 DOM 트리의 노드를
+        옮겨다니며 부모,형제,자식 노드 등을 탐색해야 할 때가 있다
+        따라서 DOM 트리 상의 노드를 탐색할 수 있도록 Node, Element
+        인터페이스는 트리 탐색 프로퍼티를 제공하고 있다
+    </pre>
+    
+    <h3>공백 텍스트 노드</h3>
+    <pre>
+        HTML 요소 사이의 스페이스, 탭, 줄바꿈(개행) 등의 공백 문자는
+        텍스트 노드를 생성한다
+    </pre>
+
+    <h3>자식 노드 탐색</h3>
+    <ol id="node">
+        <li>Node.prototype.childNodes : 자식노드(요소노드,텍스트노드)를 탐색하여 NodeList에 담아 반환</li>
+        <li>Node.prototype.firstChild : 첫번째 자식 노드(요소노드, 텍스트노드) 반환</li>
+        <li>Node.prototype.lalstChild : 마지막 자식 노드(요소노드, 텍스트노드) 반환</li>
+    </ol>
+
+    <script>
+        const $node = document.getElementById('node');
+        // NodeList 반환, 요소노드 뿐만 아니라, 텍스트 노드도 포함한다.
+        console.log($node.childNodes);
+        // 첫번째 자식 노드 탐색
+        console.log($node.firstChild);
+        // 마지막 자식 노드 탐색
+        console.log($node.lastChild)
+    </script>
+
+    <ol id="element">
+        <li>Element.prototype.children : 자식 노드 중 요소 노드만 탐색하여 HTMLCollection 에 담아 반환</li>
+        <li>Element.prototype.firstElementChild : 첫번째 자식 요소 노드 반환</li>
+        <li>Element.prototype.lastElementChild : 마지막 자식 요소 노드 반환</li>
+    </ol>
+
+    <script>
+        const $element = document.getElementById('element');
+        // HTMLCollection 객체반환, 요소노드만 포함을 한다
+        console.log($element.children);
+        console.log($element.firstElementChild);
+        console.log($element.lastElementChild);
+
+        // 두번째 요소찾기
+        const $second = $element.querySelector('li:nth-child(2)');
+        console.log($second);
+    </script>
+
+    <h3>자식 노드 존재 확인</h3>
+    <pre>
+        Node.prototype.hasChildNodes 메소드를 사용하여 자식 노드
+        존재 여부를 확인한다
+        이 친구도 텍스트 노드를 포함하여 자식 노드의 존재를 확인한다
+    </pre>
+    <ol id="empty"></ol>
+    <script>
+        const $empty = document.getElementById('empty');
+        console.log($empty);
+        console.log($empty.hasChildNodes()); 
+
+        //텍스트 노드를 포함하여 확인하기 때문에 ol 태그 사이를 
+        //개행하면 ture, 개행하지 않으면 false 를 반환한다
+    </script>
+</body>
+</html>

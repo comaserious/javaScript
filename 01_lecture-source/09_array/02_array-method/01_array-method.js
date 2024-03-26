@@ -21,6 +21,11 @@ console.log(`foodList.lastIndexOf('팔도비빔면') : ${foodList.lastIndexOf('�
 console.log(`foodList.include('물회') : ${foodList.includes('물회')}`);
 
 // push와 pop 은 생략
+// push를 하면 배열의 length가 증가한다
+console.log(foodList.length);
+foodList.push('신라면')
+console.log(foodList);
+console.log(foodList.length);
 
 // unshift :배열의 맨앞에 요소 추가
 // shift : 배열의 맨 앞 요소 제거후 반환
@@ -48,6 +53,8 @@ const mix2=idol3.concat(idol1,idol2);
 
 console.log(`idol1 을 기준으로 결합 : ${mix}`);
 console.log(`idol3 을 기준으로 결합 : ${mix2}`);
+
+
 
 
 
