@@ -34,6 +34,10 @@
         // DOM 전체에서 class 속성 값이 area 인 요소들중 첫번째 요소 노드 반환
         const $area = document.querySelector('.area');
         console.log($area);
+        
+        // 형제관계의 경우 Sibling 챕터를 확인해보면 된다
+        const $area2 = $area.nextElementSibling;
+        console.log($area2);
 
         $area.style.backgroundColor='gray';
         const $first = $area.querySelector('p');
@@ -63,8 +67,11 @@
         [...$lists].forEach(list=>list.style.backgroundColor='gray');
 
         //lists 하위 요소중 food 클래스를 가진 모든 요소 반환
-        const $foodlist=document.getElementById('list').querySelectorAll('.food');
+        // const $foodlist=document.getElementById('list').querySelectorAll('.food');
+
+        const $foodlist = document.querySelectorAll('.food');
         console.log($foodlist);
+        
         [...$foodlist].forEach(food=>food.style.color='white');
 
         // css 선택자를 만족시키는 요소가 존재하지 않는 경우

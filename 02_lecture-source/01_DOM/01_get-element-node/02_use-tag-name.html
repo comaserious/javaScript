@@ -42,6 +42,7 @@
 
         //HTMLCollection 객체를 배열로 변환하여 순회하며 color 프로퍼티 값 바꾸기
         // 스프레드 문법 [...$lists]
+        //forEach 고차함수로 콜백함수를 받아 들인다
         [...$lists].forEach(list=>list.style.color='blue');
         
         // 스프레드 문법과 동일한 효과
@@ -54,6 +55,8 @@
         // 즉 get element 는 앞에 어느 박스 에서 사용할지 결정하면 될것이다
         const $drink = document.getElementById('drink');
         const $listsFromDrink = $drink.getElementsByTagName('li');
+        // const $listsFromDrink = document.getElementById('drink').getElementsByTagName('li')
+        // 이렇게 한번에 먹일수도 있다
 
         console.log($listsFromDrink);
 
