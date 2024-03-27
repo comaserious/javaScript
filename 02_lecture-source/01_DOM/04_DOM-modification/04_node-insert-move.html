@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. node insert and move</title>
+</head>
+<body>
+    <h1>04. 노드의 삽입과 이동</h1>
+
+    <h3>노드의 삽입</h3>
+    <pre>
+        Node.prototype.appendChild(자식노드) : 인수로 받은 노드를 가장 뒤에 붙여준다
+        appendChild 메소드를 호출한 노드의 마지막 자식 노드로 추가
+        Node.prototype.insertBefore(newNode,childNode)
+        :첫번째 인수로 전달받은 노드를 두번째 인수받은 노드 앞에 삽입
+        두번째 인수로 전달받은 노드는 insertBefore 메소드를 호출한 노드의 자식 노드여야한다
+    </pre>
+
+    <ul id="drink">
+        <li>coffee</li>
+    </ul>
+
+    <script>
+        const $drink = document.getElementById('drink');
+        const $li1 = document.createElement('li');
+        $li1.textContent = 'coke';
+        
+        $drink.appendChild($li1);
+
+        //insertBefore
+
+        const $li2 = document.createElement('li');
+        $li2.textContent = 'cider';
+
+        $drink.insertBefore($li2,$drink.lastElementChild);     // lastElementChid 는 방금 집어넣은 $li1 이 되었기에 coke 앞에 cider가 붙게 된다
+
+        //주의사항
+        const $li3 = document.createElement('li');
+        $li3.textContent = 'water';
+
+        // 두번째 인수가 $drink 의 자식노드가 아니기 때문에
+        //DOMException 이 발생한다
+        // $drink.insertBefore($li3,document.querySelector('pre'));
+
+        //appendChild와 동일
+        $drink.insertBefore($li3,null);
+
+    </script>
+
+    <h3>노드의 이동</h3>
+    <pre>
+        DOM 에 이미 존재하는 노드를 appendChild, insertBefore 메소드를
+        사용하여 DOM에 다시 추가하면
+        현재위치에서 노드를 제거하고 새로운 위치에 노드를 추가하는
+        노드이동이 발생하게 된다
+    </pre>
+
+    <ul id="food">
+        <li>피자</li>
+        <li>파스타</li>
+    </ul>
+
+    <script>
+        const $food = document.getElementById('food');
+        console.log($food);
+
+        // const $pizza = $food.firstElementChild;
+        // const $pasta = $food.lastElementChild;
+
+        //구조 분해 할당
+        const [$pizza , $pasta] = $food.children;
+        
+        //피자 밑으로 내리기
+        // $food.appendChild($pizza);
+        $food.insertBefore($pasta,$pizza);
+    </script>    
+
+
+</body>
+</html>

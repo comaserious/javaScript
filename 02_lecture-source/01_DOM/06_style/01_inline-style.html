@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01. inline style</title>
+</head>
+<body>
+    <h1>01. inline style</h1>
+    <pre>
+        HTMLElement.prototype.style 프로퍼티는 setter 와 getter 가 모두 존재
+        접근자 프로퍼티로 요소노드의 인라인 스타일을 취득하거나 추가 or 변경한다
+        이 프로퍼티는 CSSStyleDeclaration 타입의 객체를 반환하는데
+        이 프로퍼티에 값을 할당하면 CSS 프로퍼티가 인라인 스타일로
+        HTML 요소에 추가되거나 변경된다
+    </pre>
+
+    <div style="color:white">area</div>
+
+    <script>
+        const $area = document.querySelector('div');
+        console.log($area.style);
+        // 인라인 스타일 추가
+        $area.style.width='100px';
+        $area.style.height='100px';
+        $area.style.backgroundColor='black';
+        
+    </script>
+</body>
+</html>

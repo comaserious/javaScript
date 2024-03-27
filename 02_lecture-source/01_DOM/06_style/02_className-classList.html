@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 className and classList</title>
+    <style>
+        .area{
+            width: 100px;
+            height: 100px;
+            border : 1px solid black;
+        }
+        .circle{
+            border-radius: 50%;
+            
+
+        }
+        .lightgray{
+            background : lightgray;
+        }
+        .yellow{
+            background : yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>02. className 과 classList</h1>
+
+    <pre>
+        class 속성(attribute) 에 대응하는 DOM 프로퍼티는 class 가 아닌 className 과 classList 이다
+        Element.prototype.className 프로퍼티는 setter 와 getter 모두 존재하는 접근자 프로퍼티로
+        요소노드의 className 프로퍼티를 참조하면 class 속성의 값을 문자열로 반환하고,
+        요소노드의 className 프로퍼티에 문자열을 할당하면 class attribute 값을 할당한 문자열로 바꾸어준다
+        Element.prototype.classList 프로퍼티는 class attribute 의 정보를 담은 DOMTokenList 객체 반환
+
+        javaScript에 class가 속성이 존재하여 이를 구별하기 위해 className을 사용한다
+    </pre>
+
+    <div class="area"></div>
+    <script>
+        const $area= document.querySelector('.area');
+        console.log($area.className);    //문자열 반환
+
+        //클래스명을 덮어쓰게 되어 .area 가 제거 된다
+        // $area.className= 'circle';
+
+        console.log($area.classList);
+
+        //add(...className) <==... 여러개가 가능하다
+        //remove(...className) 
+        //값을 추가 제거가 가능하다
+
+        $area.classList.add('circle')
+        $area.classList.add('lightgray');
+
+        //item(index)는 인수로 전달 한 index에 해당하는 클래스를 class attribute에서 반환한다
+        console.log($area.classList.item(0));
+        console.log($area.classList.item(1));
+        console.log($area.classList.item(2));
+
+        console.log(`프로퍼티로 가능한거 아님? : ${$area.classList['0']}`);
+        //contains(className) 는 인수로 전달한 문자열과 일치하는 class attribute 가 있는지 확인 boolean 타입
+
+        console.log($area.classList.contains('area'));
+        console.log($area.classList.contains('ddddd'));
+
+        //replace(oldClassName, newClassName)
+        //첫번째 인수로 전달한 문자열을 두번째 인수로 전달한 문자열로 변경한다
+        
+        if($area.classList.contains('lightgray')){
+            $area.classList.replace('lightgray','yellow');
+        }
+
+        //toggle(className) / remove(className)
+        //toggle => class attribute 에 인수로 전달한 문자열과 
+        //일치하는 클래스가 있으면 삭제하고 그렇지 않으면 추가를 해준다
+
+        $area.classList.toggle('yellow');
+        // yellow가 존재하기 때문에 삭제를 한다
+
+        $area.classList.toggle('yellow');
+        // 존재하지 않았기 때문에 다시 yellow 를 추가해준다
+        // 진짜 토글 버튼이다 
+
+        $area.classList.remove('circle');
+        //단순제거
+
+        
+        
+    </script>
+</body>
+</html>

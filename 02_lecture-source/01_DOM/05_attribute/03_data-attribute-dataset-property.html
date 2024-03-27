@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03. data attribute and dataset property</title>
+</head>
+<body>
+    <h1>03. data attribute and dataset property</h1>
+
+    <pre>
+        data attribute 와 dataset 프로퍼티로 HTML 요소에 정의한 사용자 정의 attribute 와
+        자바스크립트간 데이터 교환이 가능하다
+        data attribute는 data- 접두사 다음에 임의의 이름을 붙여 사용한다
+        // html 과 javaScript 간 데이터 전달과 상호작용에 유용하다
+    </pre>
+
+    <ul class="boardlist">
+        <li data-board-id="10" data-category-id="1">신촌맛집 추천좀</li>
+        <li data-board-id="11" data-category-id="2">점심 먹고 뭐하지</li>
+        <li data-board-id="12" data-category-id="3">Halo~~~~~~~~</li>
+    </ul>
+
+    <script>
+        const boardlist = [...document.querySelector('.boardlist').children];
+        console.log(boardlist);
+
+        boardlist.forEach(board=>console.log(board.dataset));
+
+        //categoryId가 '1' 인 요소취득
+
+        const board = boardlist.find(board=>board.dataset.categoryId==='1');
+
+        console.log(board);
+
+        // board.dataset.categoryId='4';
+
+        //새로운 attribute 추가 (객체의 프로퍼티 추가와 동일하다)
+        // board.dataset.boardWriter = '너구리';
+    </script>
+</body>
+</html>

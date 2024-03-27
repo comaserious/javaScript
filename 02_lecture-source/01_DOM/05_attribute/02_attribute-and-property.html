@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 attribute and property</title>
+</head>
+<body>
+    <h1>02. HTML attribute 와 DOM 프로퍼티</h1>
+
+    <pre>
+        HTML attribute : HTML 요소의 초기 상태를 지정하면 변하지 않음
+        attribute 노드에서 관리되면 값을 얻거나 변경하려면
+        getAttribute/ setAttribute 메소드를 사용한다
+
+        DOM 프로퍼티 : 사용자가 입력한 최신 상태를 관리한다
+        사용자의 입력에 의한 상태 변화에 반응하여 언제나 최신 상태를 유지한다
+    </pre>
+
+    <label for="username">유저명</label>
+    <input type="text" id="username" value="너구리01">
+    <br>
+    <label for="nickname">닉네임</label>
+    <input type="text" id="nickname" value="자스마스터">
+
+    <script>
+        const $user = document.getElementById('username');
+        console.log($user)
+        //사용자가 input 요소의 입력필드에 값을 입력할때마다 동작하는
+        //oninput 이벤트
+        console.log($user.attributes);
+        $user.oninput = () => {
+            console.log('value 프로퍼티 값' , $user.value)
+            console.log('value attribute 값',$user.getAttribute('value'));
+        }
+    </script>
+
+    <pre>
+        getAttribute 메소드로 취득한 attribute 값은 언제나 문자열
+        하지만 DOM 프로퍼티로 취득한 최신 상태의 값은 문자열이 아닐 수 있다
+        checkbox 요소의 checked attribute 값은 문자열이지만,
+        checked 프로퍼티 값은 boolean 타입이다
+    </pre>
+
+    <label for="chekc">확인</label>
+    <input type="checkbox" id="check" checked>
+    <script>
+        const $checkbox = document.querySelector('input[type=checkbox]');
+        //getAttribte 메소드로 얻은 attribute 값은 문자열이다
+        console.log($checkbox.getAttribute('checked'));
+        console.log($checkbox.checked);   // true boolean 타입이다
+    </script>
+</body>
+</html>

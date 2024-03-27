@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 attribute</title>
+</head>
+<body>
+    <h1>01. attribute</h1>
+    <pre>
+        Element.prototype.attributes 프로퍼티는 모든 어트리뷰트 노드를
+        취득할 수 있다
+        attributes 프로퍼티는 getter 만 존재하는 읽기 전용 접근자이다
+        프로퍼티로 NameNodeMap 객체를 반환한다
+    </pre>
+
+    <label for="username">유저명</label>
+    <input type="text" id="username" value="user01">
+
+    <script>
+        // const attributes = document.getElementById('username').attibutes;
+
+        // 구조 분해 할당
+        const{attributes} = document.getElementById('username');
+
+        console.log(attributes);
+
+        //attribute 값 취득
+        console.log(attributes.id.value);
+        console.log(attributes.type.value);
+        console.log(attributes.value.value);
+        console.log('==========================================================')    
+    </script>
+    
+    <pre>
+        Element.prototype.getAttribute/setAttribute 메소드를 사용하면
+        위에서 했던 attributes 프로퍼티를 통하지 않고
+        요소노드에서 메소드를 통해 직접 HTML attribute 값을 취득하거나
+        변경할 수 있어 편리하다
+    </pre>
+
+    <script>
+        //값 취득
+        //(원하는 속성)
+        // 해당 속성의 값을 반환해준다
+        const $input = document.querySelector('input');
+        const $inputValue = $input.getAttribute('value');
+
+        console.log(`attribute value의 값 : ${$inputValue}`);
+
+        // value attribute 값을 변경
+        //(바꿀 속성, 바꿀 값)
+        $input.setAttribute('value','user02')
+        console.log($input.getAttribute('value'));
+        console.log('==========================================================')
+    </script>
+
+    <pre>
+        Element.prototype.hasAttribute(attributeName)
+        메소드를 사용하면 특정 HTML attribute 가 존재하는지 확인할 수 있다
+        Element.prototype.removeAttribute(attributeName)
+    </pre>
+
+    <label for="nickname">닉네임</label>
+    <input type="text" id="nickname" value="너구리">
+
+    <script>
+        const $nickname = document.getElementById('nickname');
+        //name 이라는 attribute를 가지고 있는지
+        console.log($nickname.hasAttribute('name'))
+        //name attribute 는 존재하지 않기 때문에 콘솔창에 false를 반환한다
+
+        if($nickname.hasAttribute('value')){
+            $nickname.removeAttribute('value');
+            // value 속성이 없어졌기 때문에 '너구리' 가 input 텍스트 안에서 사라지게 된다
+
+        }
+        console.log($nickname.hasAttribute('value'));
+        // 삭제를 했기때문에 false가 뜨는것이 정상이다
+        console.log($nickname);
+
+    </script>
+</body>
+</html>
