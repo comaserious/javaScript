@@ -60,6 +60,8 @@
         console.log($area.classList.item(2));
 
         console.log(`프로퍼티로 가능한거 아님? : ${$area.classList['0']}`);
+        console.log(`프로퍼티로 가능한거 아님? : ${$area.classList['1']}`);
+        console.log(`프로퍼티로 가능한거 아님? : ${$area.classList['2']}`);
         //contains(className) 는 인수로 전달한 문자열과 일치하는 class attribute 가 있는지 확인 boolean 타입
 
         console.log($area.classList.contains('area'));
@@ -67,7 +69,7 @@
 
         //replace(oldClassName, newClassName)
         //첫번째 인수로 전달한 문자열을 두번째 인수로 전달한 문자열로 변경한다
-        
+
         if($area.classList.contains('lightgray')){
             $area.classList.replace('lightgray','yellow');
         }

@@ -25,12 +25,12 @@
 
     <script>
         const $h2 = document.querySelector('.message');
-        function showCoods(e) {
+        function showCoords(e) {
             console.log(e);
             $h2.textContent=`client x : ${e.clientX}, client y : ${e.clientY}`;
         }
 
-        document.onclick=showCoods;
+        document.onclick=showCoords;
     </script>
     <pre>
         이벤트 핸들러를 어트리뷰트방식으로 등록했다면?
