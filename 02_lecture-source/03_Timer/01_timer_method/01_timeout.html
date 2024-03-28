@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_timeout</title>
+</head>
+<body>
+    <h1>01. timeout</h1>
+
+    <h3>setTimeout</h3>
+    <pre>
+        setTimeout(func|code [,delay , param1 , param2 , ...]);
+        setTimeout 함수는 두번째 인수로 전달받은 시간(ms 단위, 1/1000s)으로
+        단 한번 동작하는 타이머를 생성한다
+        이후 타이머 만료되면 첫번째 인수로 전달받은 콜백함수가 호출된다
+        콜백 함수에 전달해야하는 인수가 존재하는 경우 세번째 이후의 인수로 전달할 수있다
+    </pre>
+
+    <script>
+        setTimeout(()=>console.log('1초뒤에 빠밤'),1000);
+
+        setTimeout((message)=>console.log(`1초 2초 3초 ${message}`),3000,'콜백함수의 첫번째 인자를 집어넣을 공간');
+    </script>
+
+    <h3>clearTimeout</h3>
+    <pre>
+        setTimeout 함수는 생성된 타이머를 식별할 수 있는 고유한 타이머
+        id를 반환한다(즉 setTimer는 생성되면 id 값을 반환한다고 볼수 있다)
+        반환한 아이디를 clearTimeout 함수의 인수로 전달하여 타이머를 취소할수 있다
+
+    </pre>
+
+    <script>
+        const timerId = setTimeout(()=>console.log('곧 사라질 예정'),2000);
+        console.log(timerId); // 브라우저 환경에서는 숫자, Node.js 환경의 경우 객체
+        clearTimeout(timerId);
+
+    </script>
+</body>
+</html>

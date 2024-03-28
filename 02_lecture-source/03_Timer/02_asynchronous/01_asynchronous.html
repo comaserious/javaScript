@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_asynchronous</title>
+</head>
+<body>
+    <h1>01. 비동기</h1>
+
+    <pre>
+        <b>javaScript는 한번에 하나의 task(작업단위)만 실행할 수 있는
+        싱글 쓰레드 방식으로 동작한다</b>
+        그러기 때문에 처리에 시간이 걸리는 task를 실행하는 경우
+        블로킹(작업중단)이 발생하게 된다
+    </pre>
+
+    <h3>동기처리(synchronous)</h3>
+    <pre>
+        현재실행중인 task 종료할때까지 다음에 실행될
+        테스크가 대기하는 방식을 동기처리라고 한다
+        장점 : 테스크 순서대로 하나씩 처리하기 때문에 실행순서가 보장됨
+        단점 : 앞선 테스크가 종료할때까지 이후 것들이 블로킹 된다
+    </pre>
+
+    <script>
+        function sleep(func,time){
+
+            const delayUntil = Date.now() + time;
+
+            while(Date.now()<delayUntil);
+
+            func();
+        }
+        function delay() {
+            console.log('실행시간을 늦추고 싶다');
+
+        }
+        function start(){
+            console.log('바로 실행하고 싶다');
+        }
+
+        //sleep 함수는 3초 시간을 무한 루프를 넣었기 때문에
+        //그 이후에 실행되고 있다
+        sleep(delay,3000);
+
+        // start 함수는 3초간 기다려야 그제서야 엔진이 읽을수 있게 된다 즉 블로킹을 당했다
+        // 이것이 동기처리의 장점이자 단점이 들어나는 점이다
+        // 실행의 순서는 아주 정확하게 보장이 되지만
+        // 아무리 급한 테스크라도 순서를 기다려야한다는 단점이 존재한다
+        start();
+
+    </script>
+
+    <h3>비동기 처리(asynchronous)</h3>
+
+    <pre>
+        현재 실행중인 테스크가 종료 되지 않은 상태라고 해도
+        다음 테스크를 곧 바로 실행하는 방식을 비동기 처리라고 한다
+        장점 : 테스크가 블로킹당하지 않기 때문에 빠르게 처리 할수 있다
+        단점 : 실행 순서를 보장 할 수 없다
+
+        setTimeout, setInterval, 이벤트핸들러, HTTP 요청
+        등은 비동기 처리 방식으로 동작한다
+    </pre>
+
+    <script>
+        setTimeout(delay,3000);
+        start();
+    </script>
+
+    <h3>테스크 큐(task queue)</h3>
+    <pre>
+        setTimeous, setInterval 과 같은 비동기 함수의 콜백함수 또는 이벤트핸들러가
+        일시적으로 보관되는 영역이다
+    </pre>
+
+    <h3>이벤트루프(event loop)</h3>
+    <pre>
+        이벤트 루프는 콜 스택(스택) 공간에 실행중인 context 가 있는지 , 그리고 테스크 큐에 대기하고 있는
+        함수들이 있는지 확인을 한다
+        만일 콜스택이 비어있고, 테스크큐에 대기중인 함수가 있다고 하면
+        이름에서 유추할수 있듯이 queue FIFO 방식으로 테스크 큐에서 대기중인 함수를 
+        콜스택으로 이동시킨다
+    </pre>
+
+    <pre>
+        <b>javaScript 는 싱글스레드 방식으로 동작하지만, 브라우저는 멀티쓰레드로 동작을 하기 때문에
+            -자바스크립트라고 하는 언어가 비동기로 동작할수 있는것이다(마치 멀티쓰레드인것처럼 동작을 하고 있다는 뜻이다)
+        </b>
+    </pre>
+</body>
+</html>

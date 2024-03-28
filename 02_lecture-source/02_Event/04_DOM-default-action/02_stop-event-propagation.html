@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.sotp event propagation</title>        
+</head>
+<body>
+    <h1>02. 이벤트 전파 방지</h1>
+
+    <pre>
+        이벤트 객체의 stopPropagation 메소드는 이벤트 전파를 중지 시킨다
+    </pre>
+
+    <ul id="drink">
+        <li>coke</li>
+        <li>cider</li>
+        <li>milk</li>
+    </ul>
+
+    <script>
+        const $drink = document.getElementById('drink');
+        $drink.addEventListener('click',e=>{
+            if(e.target.matches('li')){
+                e.target.style.color='red';
+            }
+        })
+
+        // 첫번째 li 태크를 대상으로 color를 변경
+        document.querySelector('li').addEventListener('click',e=>{
+            e.stopPropagation();
+            e.target.style.color='blue';});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01.window</title>
+</head>
+<body>
+    <h1>01. open, alert, comfirm, prompt 메소드</h1>
+
+    <h3>브라우저 환경</h3>
+    <pre>
+        javaScript 가 돌아가는 플랫폼은 호스트(host) 라고 불린다
+        호스트 환경이 웹 브라우저 일 때, 사용할 수 있는 기능
+        
+    window
+        -DOM (document.)
+        -BOM (location,navigator,screen,history,.....)
+        -javaScript(Object,Array,function,.....)
+
+    최상단의 window 객체는 자바스크립트 코드의 전역 객체이자
+    브라우저 창을 대변하고 이를 제어할수 있는 메소드를 제공한다
+    window 객체는 전역객체이기 때문에 생략이 가능하다
+    </pre>
+
+    <h3>open</h3>
+    <pre>
+        window.open(url,name,params) 메소드로 새창을 열수 있다
+        url: 새 창에 로드할 url
+        name : 새 창의 이름으로 해당 이름을 가진 창이 이미 있다면
+            그안에서 열리고, 그렇지 않으면 새창이 열린다
+        params : 새창의 설정 정보를 쉼표로 구분하여 문자열로 전달
+    </pre>
+
+    <button id="btn1">새로운 창 열기</button>
+
+    <script>
+        const $btn1 = document.getElementById('btn1');
+        $btn1.onclick=()=>window.open('http://www.google.com','popup1',
+        'width=1080, height=720');
+    </script>
+
+    <h3>alert</h3>
+    <pre>
+        window.alert('message') 메소드는 확인 버튼을 가지며
+        메시지를 지정할수 있는 경고 대화 상자를 띄운다
+    </pre>
+
+    <script>
+        // window.alert('alert 등장');
+    </script>
+
+    <h3>comfirm</h3>
+    <pre>
+        window.comfirm(message) 메소드는 확인과 취소 두 버튼을 가지며
+        메시지를 지정할 수 있는 모달 대화 상자를 띄운다
+        반환 값은 확인을 누를 시 true, 취소를 누르거나 ESC 키를 누르면 false
+    </pre>
+
+    <script>
+        const answer = window.confirm('keep going?');
+        if(answer) console.log('확인햇습니다')
+        else console.log('잘가쇼')
+    </script>
+
+    <h3>prompt</h3>
+    <pre>
+        window.prompt(message,default);
+        이 메소드는 사용자가 텍스트를 입력할수 있도록 안내하는
+        선택적 메시지를 갖고 잇는 대화 상자를 띄운다
+        default :  텍스트 입력 필드에 기본으로 채워 넣을 문자열
+
+        반환 값은 확인을 누른다면 사용자가 입력한 문자열이며,
+        취소 or ESC 를 누를 null값이 반환된다
+    </pre>
+
+    <script>
+        const likeFood = window.prompt('좋아하는 음식을 입력','볶음우동');
+
+        if(likeFood){
+            console.log(`내가 좋아하는 음식은 ${likeFood}`)
+        }else{
+            console.log('입력좀해라')
+        }
+    </script>
+</body>
+</html>

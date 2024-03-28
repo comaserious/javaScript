@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01. prevent browser action</title>
+</head>
+<body>
+    <h1>01. 브라우저 기본동작 중단</h1>
+    <pre>
+        이벤트 객체의 preventDefault 메소드(메소드다 () 무조건 써줘야한다)는 DOM 요소의 기본동작을 중단시킨다
+        예를들어,
+        a 태그의 href 속성에 지정된 링크로 이동하는 것
+        checkbox 또는 radio 요소를 클릭하면 체크 또는 해제되는것
+        이러한 것들이 기본동작이다
+    </pre>
+
+    <a href="http://www.naver.com" style="text-decoration: none;">네이버로 가기</a>
+    <br>
+    <input type="checkbox">체크해보세요
+
+    <script>
+        document.querySelector('a').addEventListener('click',e=>e.preventDefault());
+        
+        document.querySelector('input[type=checkbox]').addEventListener('click',e=>e.preventDefault());
+    </script>
+</body>
+</html>

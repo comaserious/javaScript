@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02. prevent select copy</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <h1>02. 선택막기, 복사막기</h1>
+
+    <pre>
+        mousedown,mousemove 이벤트가 발생할때 나타나는 기본브라우저 동작을 마긍면
+        글시 선택을 막을수 있다
+        copy 이벤트가 발생할때, 나타나는 브라우저 기본동작을 막아
+        복사도 막을수 있다
+        브라우저 기본동작을 막는 방법은 이벤트 객체의 preventDefault 메소드와
+        이벤트 핸들러의 반환값을 false 로 하는것이 있다
+    </pre>
+
+    <span>이 영역은 드래그를 해도, 또는 더블클릭을 해도 선택 되지 않음</span>
+    <div>
+        이 편지는 영국에서 최초로 시작되어 일년에 한 바퀴 돌면서
+        받는 사람에게 행운을 주었고 지금은 당신에게로 옮겨진 이 편지는
+        4일 안에 당신 곁을 떠나야 합니다. 이 편지를 포함해서 7통을
+        행운이 필요한 사람에게 보내주어야 합니다. 복사는 안됩니다
+    </div>
+
+    <script>
+        const $span = document.querySelector('span');
+        $span.onmousedown = e=>{
+            e.preventDefault();
+            }
+        $span.onmousemove = e => e.preventDefault();
+
+        const $div = document.querySelector('div');
+        $div.oncopy=()=>{
+            alert('복사 금지');
+            return false;
+        }
+    </script>
+</body>
+</html>

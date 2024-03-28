@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01. mouse event</title>
+    <style>
+        .area{
+            background:  lightgray;
+            border : 1px solid black;
+            min-height : 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>01. 마우스 관련 이벤트</h1>
+    <h3>마우스 이벤트 종류</h3>
+
+    <ul>
+        <li>mousedown/mouseup</li>
+        <li>mouseover/mouseout</li>
+        <li>mousemove</li>
+        <li>click</li>
+        <li>contextmenu</li>
+    </ul>
+    
+    <h3>마우스이벤트 테스트</h3>
+    <button>클릭하세요</button>
+    <div class="area"></div>
+
+    <script>
+        const $btn = document.querySelector('button');
+        const $area = document.querySelector('.area');
+
+        //event.button
+        // 0 : 왼쪽 클릭 | 1 : 가운데(휠)  | 2 : 오른쪽 클릭
+
+        // e 라는 것은 이벤트 핸들러 함수의 매개변수. on ~ 같은 이벤트 핸들러 함수에 전달되는 이벤트 객체
+        $btn.onmousedown=e=>{// 눌렀을때
+            $area.insertAdjacentHTML('beforeend','mousedown button='+e.button+'<br>')
+        }
+        $btn.onmouseup=e=>{// 땠을때
+            $area.insertAdjacentHTML('beforeend','mousedown up='+e.button+'<br>')
+        }
+
+        // $btn.onmouseover=e=>{//버튼에 마우스를 올릴때
+        //     $area.insertAdjacentHTML('beforeend','mouseover button='+e.button+'<br>')
+        // }
+        // $btn.onmouseout=e=>{//버튼에서 마우스가 벗어날때
+        //     $area.insertAdjacentHTML('beforeend','mouseout button='+e.button+'<br>')
+        // }
+
+        $btn.onclick=e=>{
+            $area.insertAdjacentHTML('beforeend','click button='+e.button+'<br>')
+        }
+        $btn.ondblclick=e=>{
+            $area.insertAdjacentHTML('beforeend','dblclick button='+e.button+'<br>')
+        }
+        $btn.oncontextmenu=e=>{
+            $area.insertAdjacentHTML('beforeend','contextmenu='+e.button+'<br>')
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.interval</title>
+</head>
+<body>
+    <h1>02. interval</h1>
+
+    <h3>setInterval</h3>
+    <pre>
+        setInterval(func|code [,delay, pram1,pram2....]);
+        이 함수는 두번째 인수로 전달받은 시간(ms)으로 반복동작하는 타이머를 생성한다
+        이후 타이머가 만료될때마다 첫번째 인수로 전달받은 콜백함수가 반복 호출된다
+        이는 타이머가 취소될때까지 반복한다
+        전달해야 할 인수가 있다면 세번재 이후에 전달하면 된다
+    </pre>
+
+    <div style="height: 100px; width:100px; background-color: hotpink;"></div>
+
+    <script>
+        let count =1;
+        const timerId=setInterval(()=>{
+            console.log(count)
+            if(count++===5){
+            clearTimeout(timerId);
+            }}
+        ,1000);
+        const $div = document.querySelector('div');
+        let isOn= true;
+        setInterval(()=>{
+            
+            if(isOn) {$div.style.opacity=0 ; isOn=false;}
+
+            else{
+                $div.style.opacity=100;
+                isOn=true;
+            }
+            
+            
+        },500);
+    </script>
+</body>
+</html>

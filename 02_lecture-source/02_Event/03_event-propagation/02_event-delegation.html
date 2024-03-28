@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02. event delegation</title>
+    <style>
+        .highlight{
+            font-weight:bolder;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>02.이벤트 위임</h1>
+
+    <pre>
+        비슷한 방식으로 여러 요소를 다루어야 할때, 각요소마다 이벤트 핸드러를
+        등록하지 않고, 공통의 조상(부모) 에 이벤트 핸들러를 단 하나만 할당하여
+        여러 요소를 한번에 다루는 것을 이벤트 위임이라한다
+        공통 조상에 할당한 핸들러에서 event.target 을 이용하면
+        실제로 어디서 이벤트가 일어났는지 알 수 있으며,
+        이를 이용하여 이벤트를 핸들링 할 수 있다
+    </pre>
+
+    <ul id="drink">
+        <li>아이스아메리카노</li>
+        <li>카페라테</li>
+        <li>에스프레소</li>
+    </ul>
+
+    <script>
+        // 각 li 가 클릭되었을때, hilight 라는 클래스가 없을 경우 부여하고 그렇지 않을경우 제거할것이다
+        const $drink = document.getElementById('drink');
+
+        //ul이 클리 되었을때 만이 아니라 자손인 li가 선택되었을때도 버블링에 의해 이벤트가 전파가 된다
+        //이벤트 핸들러가 작동한다
+        $drink.addEventListener('click',e=>{
+            // ul 영역을 클릭시에는 동작시키고 싶지 않다
+            if(e.target.matches('li')){
+                highlight(e.target);   // li 가 클릭 되었을때 해당 li를 인자로 전달한다
+            }
+        })
+        function highlight(li){
+            // 클릭된 li 의 class 에 highlight 클래스를 부여하거나 제거
+            li.classList.toggle('highlight');
+        }
+
+        // 한개의 이벤트 핸들러로 3개의 이벤트 핸들링을 한것이다 매우 효율적이지 않은가
+        // 각각의 li 태그마다 이벤트 핸들러를 등록할수 있지만
+        // 상위 요소인 ul 태그에 한번만 등록하여 코드의 양을 줄였다
+    </script>
+</body>
+</html>

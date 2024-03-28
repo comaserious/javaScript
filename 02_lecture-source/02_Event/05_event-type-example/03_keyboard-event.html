@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03. keyboard event</title>
+    <style>
+        .area{
+            min-height: 100px;
+            border: 1px solid black;
+            background: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <h1>03. 키보드 관련 이벤트</h1>
+    <h3>키보드 이벤트 종류</h3>
+    <ul>
+        <li>keydown</li>
+        <li>keyup</li>
+    </ul>
+
+    <h3>키보드 이벤트 테스트</h3>
+    <label for="write">쓰쇼:</label>
+    <input type="text" id="write" placeholder="입력좀">
+
+    <pre>
+        event.key : 문자
+        event.code : 물리적인 키 코드 
+        ex) 소문자 a 입력 event.key='a' event.code=KeyA
+            대문자 A 입력 event.key='A' event.code=KeyA
+    </pre>
+
+    <div class="area"></div>
+
+    <script>
+        const message = document.querySelector('input[type=text]');
+        const area = document.querySelector('.area');
+
+        message.onkeydown=e=>{
+            area.insertAdjacentHTML('beforeend','keydown key='+e.key+',code='+e.code+'<br>');
+        }
+        
+        message.onkeyup=e=>{
+            area.insertAdjacentHTML('beforeend','keyup key='+e.key+',code='+e.code+'<br>');
+        }
+    </script>
+</body>
+</html>
