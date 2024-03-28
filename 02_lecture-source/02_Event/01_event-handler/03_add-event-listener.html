@@ -34,7 +34,8 @@
         $btn.addEventListener('click',()=>console.log('addEventListener 로 이벤트 추가'));
 
         //참조가 동일한 이벤트 핸들러를 중복 등록하면?
-        const handleMouseOver= function(){
+        const handleMouseOver= function(e){
+            
             console.log('button mouseover');
         }
 

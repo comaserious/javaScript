@@ -38,7 +38,8 @@
         $drink.addEventListener('click',e=>{
             // ul 영역을 클릭시에는 동작시키고 싶지 않다
             if(e.target.matches('li')){
-                highlight(e.target);   // li 가 클릭 되었을때 해당 li를 인자로 전달한다
+                // highlight(e.target);   // li 가 클릭 되었을때 해당 li를 인자로 전달한다
+                e.target.classList.toggle('highlight');
             }
         })
         function highlight(li){
